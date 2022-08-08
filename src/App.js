@@ -9,7 +9,7 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 const WrappedStyled = styled.div`
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     background-color: #FBC5C5;
     display: flex;
     justify-content: center;
@@ -19,20 +19,16 @@ const WrappedStyled = styled.div`
 
 function App() {
   return (
-    <Row>
-        <Col span={24}>
-          <WrappedStyled>
-            <BrowserRouter>
-              <AuthProvider>
-                <Routes>
-                    <Route path='login' element={ <Login /> }/>
-                    <Route path='/' element={ <ChatWindow /> }/>
-                </Routes>
-              </AuthProvider>
-            </BrowserRouter>
-          </WrappedStyled>
-        </Col>
-    </Row>
+    <WrappedStyled>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+              <Route path='login' element={ <Login /> }/>
+              <Route path='/' element={ <ChatWindow /> }/>
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </WrappedStyled>
   );
 }
 
