@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import firebase, { auth } from '../../firebase/config'
+import { auth } from '../../firebase/config'
 import { Form, Input, Button } from 'antd'
 import Message from './Message'
 import { AuthContext } from '../../Context/AuthProvider'
