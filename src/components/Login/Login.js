@@ -1,10 +1,10 @@
-import { getAdditionalUserInfo, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { FacebookAuthProvider, getAdditionalUserInfo, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import React from 'react'
 import styled from 'styled-components'
 import { auth } from '../../firebase/config'
 import { addDocument } from '../../firebase/services'
 import { Button } from 'antd'
-import { GoogleSquareFilled } from '@ant-design/icons'
+import { FacebookFilled, GoogleSquareFilled } from '@ant-design/icons'
 
 
 const ContentStyled = styled.div`
@@ -28,6 +28,7 @@ const ContentStyled = styled.div`
 export default function Login() {
 
     const googleProvider = new GoogleAuthProvider()
+    const fbProvider = new FacebookAuthProvider()
 
 
     const handleGoogleLogin = async () => {
@@ -37,7 +38,6 @@ export default function Login() {
         console.log(user);
 
         if(AdditionalUserInfo.isNewUser) {
-            console.log('new user');
             addDocument('users', {
                 displayName: user.displayName,
                 email: user.email,
@@ -46,8 +46,8 @@ export default function Login() {
                 providerId: AdditionalUserInfo.providerId,
             })
        }
-        
     }
+
 
     return (
         <ContentStyled>
